@@ -69,12 +69,11 @@ def processCenterLine(pid,records):
         physical_id = int(row[0])
         street = row[28].lower()
         boro = boro_idx[row[13]]
-            
-            for i in [2, 3, 4, 5]:
+        
+        for i in [2, 3, 4, 5]:
             if row[i]:
                 if row[i].isdigit():
-                    row[i] = float(row[i])
-                       
+                    row[i] = float(row[i]) 
                 else:
                     first, row[i] = row[i].split('-')
                     row[i] = str(int(row[i]))
