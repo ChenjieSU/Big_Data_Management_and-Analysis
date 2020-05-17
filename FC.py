@@ -121,7 +121,7 @@ if __name__ == "__main__":
 
     centerline = sc.textFile('hdfs:///tmp/bdm/nyc_cscl.csv')
     rdd_cl = centerline.mapPartitionsWithIndex(processCenterLine)
-    cl_df = spark.createDataFrame(rdd_cl,('pysical_id','street','boro','low','high','is_left'))
+    cl_df = spark.createDataFrame(rdd_cl,('physical_id','street','boro','low','high','is_left'))
     
     violations = sc.textFile('hdfs:///tmp/bdm/nyc_parking_violation/')
     rdd_vio = violations.mapPartitionsWithIndex(processViolationCounty)
