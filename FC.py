@@ -125,7 +125,7 @@ if __name__ == "__main__":
     
     violations = sc.textFile('hdfs:///tmp/bdm/nyc_parking_violation/')
     rdd_vio = violations.mapPartitionsWithIndex(processViolationCounty)
-    vio_df = createDataFrame(rdd_vio,('year','house','street','boro','is_left'))
+    vio_df = spark.createDataFrame(rdd_vio,('year','house','street','boro','is_left'))
     
     boro_condition = (vio_df.boro == cl_df.boro)
     street_condition = (vio_df.street == cl_df.street)
