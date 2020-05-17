@@ -15,7 +15,7 @@ start_time = time.time()
 
 
 def processViolationCounty(pid, records):
-    
+    # Mahattan->1, Bronx->2, Brooklyn->3, Queens->4, Staten Island ->5
     county_idx = {'MAN':1,'MH':1,'MN':1,'NEWY':1,'NEW Y':1,'NY':1,\
                   'BRONX':2,'BX':2,'PBX':2,\
                   'BK':3,'K':3,'KING':3,'KINGS':3,\
@@ -30,7 +30,6 @@ def processViolationCounty(pid, records):
     for row in reader:
         try:
             year = int(row[4][-4:])
-            
             street = row[24].lower()
             
             if row[21] in county_idx.keys():
@@ -89,22 +88,16 @@ def processCenterLine(pid,records):
 
 def processFormat(records):
     for r in records:
-        
         if r[0][1]==2015:
             yield (r[0][0], (r[1], 0, 0, 0, 0))
-            
         elif r[0][1]==2016:
             yield (r[0][0], (0, r[1], 0, 0, 0))
-            
         elif r[0][1]==2017:
             yield (r[0][0], (0, 0, r[1], 0, 0))
-            
         elif r[0][1]==2018:
             yield (r[0][0], (0, 0, 0, r[1], 0))
-            
         elif r[0][1]==2019:
             yield (r[0][0], (0, 0, 0, 0, r[1]))
-            
         else: 
             yield (r[0][0], (0, 0, 0, 0, 0))
 
