@@ -58,10 +58,10 @@ def processViolationCounty(pid, records):
         
 def processCenterLine(pid,records):
     
+     boro_idx = {'1': 'Manhattan', '2': 'Bronx', '3': 'Brooklyn', '4':'Queens','5': 'Staten Island'} 
+        
     if pid==0:
         next(records)
-        boro_idx = {'1': 'Manhattan', '2': 'Bronx', '3': 'Brooklyn', '4':'Queens','5': 'Staten Island'} 
-    
     reader = csv.reader(records)
     
     for row in reader:
