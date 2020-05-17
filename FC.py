@@ -65,7 +65,6 @@ def processCenterLine(pid,records):
     reader = csv.reader(records)
     
     for row in reader:
-       
         physical_id = int(row[0])
         street = row[28].lower()
         boro = boro_idx[row[13]]
