@@ -85,20 +85,14 @@ def processCenterLine(pid,records):
         
 
 def processFormat(records):
-    for r in records:
-        if r[0][1]==2015:
-            yield (r[0][0], (r[1], 0, 0, 0, 0))
-        elif r[0][1]==2016:
-            yield (r[0][0], (0, r[1], 0, 0, 0))
-        elif r[0][1]==2017:
-            yield (r[0][0], (0, 0, r[1], 0, 0))
-        elif r[0][1]==2018:
-            yield (r[0][0], (0, 0, 0, r[1], 0))
-        elif r[0][1]==2019:
-            yield (r[0][0], (0, 0, 0, 0, r[1]))
-        else: 
-            yield (r[0][0], (0, 0, 0, 0, 0))
-
+    for row in records:
+        counts = [0,0,0,0,0]
+        if row[0][1] in list(range(2015,2020)):
+            counts[row[0][1]-2015] = row[1]
+            yield (row[0][0],counts)
+        else:
+            yield (row[0][0],counts)
+            
 def compute_ols(y, x=list(range(2015,2020))):
     x, y = np.array(x), np.array(y)
     # number of observations
